@@ -1,5 +1,6 @@
 package com.beerapi.beerapi.services;
 
+import com.beerapi.beerapi.exceptions.NotFoundException;
 import com.beerapi.beerapi.models.Beer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,12 @@ public class BeerServiceImpl implements BeerService {
 
     @Override
     public Beer getBeerById(UUID id) {
-        return beers.get(id);
+        var beer = beers.get(id);
+
+        if (beer == null) {
+            throw new NotFoundException("Can't find a beer with id: " + id);
+        }
+        return beer;
     }
 
     @Override

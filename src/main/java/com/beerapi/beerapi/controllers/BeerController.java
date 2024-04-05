@@ -32,19 +32,18 @@ public class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity addBeer(@RequestBody Beer beer) {
+    public ResponseEntity<Object> addBeer(@RequestBody Beer beer) {
         var savedBeer = beerService.addBeer(beer);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Location", "/api/beer" + savedBeer.getId().toString());
 
-        return new ResponseEntity(httpHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<>(httpHeaders, HttpStatus.CREATED);
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity updateBeer(@PathVariable("id") UUID id, @RequestBody Beer beer) {
+    public ResponseEntity<Object> updateBeer(@PathVariable("id") UUID id, @RequestBody Beer beer) {
         beerService.editBeer(id, beer);
 
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 }
