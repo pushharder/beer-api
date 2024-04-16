@@ -43,13 +43,13 @@ public class UserController {
 
     @PatchMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void editBrewery(@PathVariable("id") UUID id, @RequestBody UserDTO user) {
+    public void editUser(@PathVariable("id") UUID id, @RequestBody UserDTO user) {
         userService.editUser(id, user);
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBrewery(@PathVariable("id") UUID id) {
+    public void deleteUser(@PathVariable("id") UUID id) {
         userService.deleteUser(id);
     }
 

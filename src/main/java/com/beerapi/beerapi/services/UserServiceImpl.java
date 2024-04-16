@@ -1,7 +1,6 @@
 package com.beerapi.beerapi.services;
 
 import com.beerapi.beerapi.exceptions.NotFoundException;
-import com.beerapi.beerapi.models.BreweryDTO;
 import com.beerapi.beerapi.models.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -84,7 +83,6 @@ public class UserServiceImpl implements UserService {
         existing.setVersion(existing.getVersion() + 1);
 
         usersMap.put(existing.getId(), existing);
-
     }
 
     @Override

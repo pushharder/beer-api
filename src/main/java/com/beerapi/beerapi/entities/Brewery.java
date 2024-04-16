@@ -25,6 +25,8 @@ public class Brewery {
     private String name;
     private String description;
     private int score;
+    private String website_url;
+    private String brewery_type;
     private LocalDateTime createdDate;
     private LocalDateTime updateDate;
 }
