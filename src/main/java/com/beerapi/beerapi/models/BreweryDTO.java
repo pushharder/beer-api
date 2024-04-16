@@ -8,12 +8,14 @@ import java.util.UUID;
 
 @Builder
 @Data
-public class Beer {
+public class BreweryDTO {
     private UUID id;
     private String name;
     private String description;
-    private double price;
     private int score;
-    private LocalDateTime firstBrewed;
-    private String imageUrl;
+    private String website_url;
+    private String brewery_type;
+    private LocalDateTime createdDate;
+    private LocalDateTime updateDate;
+    private int version;
 }

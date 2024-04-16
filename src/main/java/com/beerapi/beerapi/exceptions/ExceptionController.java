@@ -1,6 +1,5 @@
-package com.beerapi.beerapi.controllers;
+package com.beerapi.beerapi.exceptions;
 
-import com.beerapi.beerapi.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
