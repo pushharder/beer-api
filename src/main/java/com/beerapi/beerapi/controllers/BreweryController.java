@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class BreweryController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> addBrewery(@RequestBody BreweryDTO brewery) {
+    public ResponseEntity<Object> addBrewery(@Validated @RequestBody BreweryDTO brewery) {
         var savedBrewery = breweryService.addBrewery(brewery);
 
         HttpHeaders httpHeaders = new HttpHeaders();

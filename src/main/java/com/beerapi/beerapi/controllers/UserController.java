@@ -3,6 +3,7 @@ package com.beerapi.beerapi.controllers;
 import com.beerapi.beerapi.models.UserDTO;
 import com.beerapi.beerapi.services.UserService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,7 +44,7 @@ public class UserController {
 
     @PatchMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void editUser(@PathVariable("id") UUID id, @RequestBody UserDTO user) {
+    public void editUser(@PathVariable("id") UUID id, @Valid @RequestBody UserDTO user) {
         userService.editUser(id, user);
     }
 
