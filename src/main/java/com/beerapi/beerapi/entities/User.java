@@ -1,6 +1,8 @@
 package com.beerapi.beerapi.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +23,9 @@ public class User {
 
     @Version
     private int version;
+
+    @NotNull
+    @NotBlank
     private String name;
     private LocalDateTime createdDate;
     private LocalDateTime updateDate;

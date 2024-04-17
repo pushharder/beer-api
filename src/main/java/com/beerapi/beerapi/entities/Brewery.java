@@ -2,6 +2,10 @@ package com.beerapi.beerapi.entities;
 
 import jakarta.persistence.*;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,9 +26,16 @@ public class Brewery {
 
     @Version
     private int version;
+
+    @NotNull
+    @NotBlank
     private String name;
     private String description;
+
+    @Min(0)
+    @Max(10)
     private int score;
+
     private String website_url;
     private String brewery_type;
     private LocalDateTime createdDate;
