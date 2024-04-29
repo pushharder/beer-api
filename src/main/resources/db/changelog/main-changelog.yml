@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      context: dev, prod
+      file: v1/v1-accumulative.yml
+      relativeToChangelogFile: true

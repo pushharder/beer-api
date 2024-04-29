@@ -47,7 +47,7 @@ public class ExceptionsController {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity handleValidationException(MethodArgumentNotValidException exception) {
-        List errorList = exception.getFieldErrors().stream()
+        List<Map<String, String>> errorList = exception.getFieldErrors().stream()
                 .map(fieldError -> {
                     Map<String, String > errorMap = new HashMap<>();
                     errorMap.put(fieldError.getField(), fieldError.getDefaultMessage());

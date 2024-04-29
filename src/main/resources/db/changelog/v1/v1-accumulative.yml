@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      relativeToChangelogFile: true
+      file: v1-create-user-table.yml
+  - include:
+      relativeToChangelogFile: true
+      file: v1-create-brewery-table.yml

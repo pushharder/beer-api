@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1-1
+      author: Alex M
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: user
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: user_pkey
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date
+                  type: timestamp without time zone
+                  constraints:
+                    nullable: false
+              - column:
+                  name: update_date
+                  type: timestamp without time zone
+              - column:
+                  name: version
+                  type: integer
+                  constraints:
+                    nullable: false

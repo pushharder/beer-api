@@ -4,9 +4,8 @@ services:
     image: postgres:latest
     restart: always
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=breweryadmin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=brewerydb
     ports:
       - '5432:5432'
-    volumes:
-      - ./src/scripts/init.sql:/docker-entrypoint-initdb.d/init.sql

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -40,17 +41,23 @@ public class BreweryServiceJPA implements BreweryService {
 
     @Override
     public BreweryDTO addBrewery(BreweryDTO brewery) {
-        return breweryMapper.brewertyToBreweryDto(breweryRepository.save(breweryMapper.breweryDtoToBrewery(brewery)));
+        var mapped = breweryMapper.breweryDtoToBrewery(brewery);
+        mapped.setCreatedDate(LocalDateTime.now());
+        var res = breweryRepository.save(mapped);
+
+        return breweryMapper.brewertyToBreweryDto(
+                res
+        );
     }
 
     @Override
     public void editBrewery(UUID id, BreweryDTO brewery) {
         breweryRepository.findById(id).ifPresentOrElse(foundBrewery -> {
-            if(brewery.getName() != null) foundBrewery.setName(brewery.getName());
-            if(brewery.getDescription() != null) foundBrewery.setDescription(brewery.getDescription());
-            if(brewery.getScore() != 0) foundBrewery.setScore(brewery.getScore());
-            if(brewery.getWebsite_url() != null) foundBrewery.setWebsite_url(brewery.getWebsite_url());
-            if(brewery.getBrewery_type() != null) foundBrewery.setWebsite_url(brewery.getBrewery_type());
+            if (brewery.getName() != null) foundBrewery.setName(brewery.getName());
+            if (brewery.getDescription() != null) foundBrewery.setDescription(brewery.getDescription());
+            if (brewery.getScore() != 0) foundBrewery.setScore(brewery.getScore());
+            if (brewery.getWebsite_url() != null) foundBrewery.setWebsite_url(brewery.getWebsite_url());
+            if (brewery.getBrewery_type() != null) foundBrewery.setWebsite_url(brewery.getBrewery_type());
         }, () -> {
             throw new NotFoundException("Can't update a brewery with id" + id);
         });

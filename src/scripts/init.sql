@@ -1,6 +1,0 @@
-DROP DATABASE IF EXISTS brewerydb;
-DROP USER IF EXISTS breweryadmin;
-CREATE DATABASE brewerydb;
-CREATE USER breweryadmin WITH ENCRYPTED PASSWORD 'admin';
-GRANT ALL PRIVILEGES ON DATABASE brewerydb TO breweryadmin;
-GRANT ALL ON SCHEMA public TO breweryadmin;
